@@ -1,8 +1,11 @@
 import { Button, Form } from "react-bootstrap";
 import { CartState } from "../context/Context";
 import "./styles.css";
+import Rating from "./Rating";
+import { useState } from "react";
 
 const Filters = () => {
+    const [rate, setRate] = useState(2);
     // make state for rating
 
     return (
@@ -44,19 +47,14 @@ const Filters = () => {
                     id={`inline-4`}
                 />
             </span>
-            {/* <span>
+            <span>
                 <label style={{ paddingRight: 10 }}>Rating: </label>
                 <Rating
-                    rating={byRating}
-                    onClick={(i) =>
-                        productDispatch({
-                            type: "FILTER_BY_RATING",
-                            payload: i + 1
-                        })
-                    }
+                    rating={rate}
+                    onClick={(i) => setRate(i + 1)}
                     style={{ cursor: "pointer" }}
                 />
-            </span> */}
+            </span>
             <Button variant="light">Clear Filters</Button>
         </div>
     );
